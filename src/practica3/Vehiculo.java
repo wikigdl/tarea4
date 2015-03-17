@@ -52,8 +52,8 @@ public class Vehiculo {
     public HashMap isPosible(HashMap properties){
         boolean result=true;
         HashMap map= new HashMap();
-        List<String> found =new ArrayList();
-        List<String> notFound =new ArrayList();
+        List<String> found =new ArrayList<String>();
+        List<String> notFound =new ArrayList<String>();
 
         for (Object name: properties.keySet()) {
 
@@ -62,6 +62,12 @@ public class Vehiculo {
                 String value = properties.get(name).toString();
 
                 boolean rest = evaluar(key, value);
+                if(rest){
+                    System.out.println("posibility found");
+                }
+                else{
+                    result=false;
+                }
                 //funcion evaluar
                 found.add(key);
 
@@ -71,7 +77,8 @@ public class Vehiculo {
 
             }
         }
-        if (result){
+        if (result==true){
+            System.out.println("returning:"+this.nombre);
             map.put("found",found);
             map.put("notFound",notFound);
         }
@@ -84,9 +91,9 @@ public class Vehiculo {
         String operador;
         operador = sentence.substring(0,1);
         sentence =sentence.substring(1);
-
+        System.out.println(this.nombre + "comparando: " + sentence + ":" + inputVal);
         if(operador.equals("="))
-            if(inputVal.trim().equals(sentence.trim()))
+            if(inputVal.trim().toUpperCase().equals(sentence.trim().toUpperCase()))
                 val= true;
         if(operador.equals("<"))
             try{
