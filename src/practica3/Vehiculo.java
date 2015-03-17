@@ -77,10 +77,12 @@ public class Vehiculo {
 
             }
         }
-        if (result==true){
-            System.out.println("returning:"+this.nombre);
-            map.put("found",found);
-            map.put("notFound",notFound);
+        if (result==true) {
+            if (!found.isEmpty()) {
+                System.out.println("returning:" + this.nombre);
+                map.put("found", found);
+                map.put("notFound", notFound);
+            }
         }
         return map;
 
